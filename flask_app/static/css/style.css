@@ -5,17 +5,21 @@
     box-sizing: border-box;
     vertical-align: top;
     font-size:xx-large;
-    outline:red 1px dotted;
 }
 #wrapper {
     /* width:1000px; */
 }
-h1 {
-    
+#errors_div {
+    height:80px;
 }
 input {
     border:3px solid black;
 }
 input[type="submit"] {
     box-shadow: 10px 10px 10px black;
+}
+.red {
+    color:red;
+    font-size:medium;
+    margin:0;
 }

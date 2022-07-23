@@ -1,4 +1,5 @@
 from flask_app.config.mysqlconnection import connectToMySQL
+from flask import flash
 
 class Order:
     def __init__(self,data):
@@ -57,8 +58,24 @@ class Order:
                 '''
         return connectToMySQL('cookie_orders').query_db(query,data)
         
-    # @classmethod
-    # def xxx(cls,data):
-    #     pass
+    @staticmethod
+    def validate(order):
+        print('B'*50)
+        print(order)
+        is_valid = True
+        if len(order['customer_name']) < 2:
+            flash("Customer name must be at least two characters")
+            is_valid = False
+        if len(order['cookie_type']) < 2:
+            flash("Cookie type must be at least two characters")
+            is_valid = False
+        if len(order['number_of_boxes'])< 1:
+            flash("Must order at least one box to save order")
+            is_valid = False
+        elif int(order['number_of_boxes']) < 1:
+            flash("Must order at least one box to save order")
+            is_valid = False
+        return is_valid
+
 
 
