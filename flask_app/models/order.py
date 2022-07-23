@@ -39,11 +39,13 @@ class Order:
         
     @classmethod
     def update(cls,data):
+        print("A"*50)
+        print(data)
         query = '''
                 UPDATE orders
                 SET customer_name=%(customer_name)s,
                     cookie_type=%(cookie_type)s,
-                    number_of_boxes=%(number_of_boxes)s;
+                    number_of_boxes=%(number_of_boxes)s
                 WHERE id=%(order_id)s;
                 '''
         return connectToMySQL('cookie_orders').query_db(query,data)

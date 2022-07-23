@@ -10,15 +10,17 @@ def orders():
 def order_new():
     return render_template('order_new.html')
 
-@app.route('/order_save/')
+@app.route('/order_save/',methods=['POST'])
 def order_save():
+    Order.save(request.form)
     return redirect('/')
 
 @app.route('/order_edit/<int:order_id>/')
 def order_edit(order_id):
-    return render_template('order_edit.html')
+    return render_template('order_edit.html',order=Order.get_one({'order_id':order_id}))
 
-@app.route('/order_update/<int:order_id>/')
-def order_update(order_id):
+@app.route('/order_update/',methods=['POST'])
+def order_update():
+    Order.update(request.form)
     return redirect('/')
 
