@@ -13,3 +13,9 @@
 h1 {
     
 }
+input {
+    border:3px solid black;
+}
+input[type="submit"] {
+    box-shadow: 10px 10px 10px black;
+}
